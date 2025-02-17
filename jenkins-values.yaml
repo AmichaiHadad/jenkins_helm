@@ -7,9 +7,9 @@ controller:
     username: "admin"
     password: "admin123"
   installPlugins:
-    - kubernetes:4013.v1a_0a_4367b_f82f"
-    - workflow-job:1289.vd1c337fd5354"
-    - command-launcher:108.v14d7c66525ee"
+    - kubernetes:4013.v1a_0a_4367b_f82f
+    - workflow-job:1289.vd1c337fd5354
+    - command-launcher:108.v14d7c66525ee
   persistence:
     enabled: true
     storageClass: "standard"
@@ -17,7 +17,6 @@ controller:
   securityContext:
     runAsUser: 1000
     fsGroup: 1000
-    fsGroupChangePolicy: "OnRootMismatch"
 
 agent:
   enabled: true
