@@ -1,15 +1,15 @@
 controller:
   componentName: "jenkins-controller"
-  image:
-    repository: jenkins/jenkins
-    tag: lts-jdk17
-  adminUser: "admin"
-  adminPassword: "admin123"
+  image: "jenkins/jenkins"
+  tag: "lts-jdk17"
   serviceType: ClusterIP
+  admin:
+    username: "admin"
+    password: "admin123"
   installPlugins:
-    - kubernetes:1.31.4
-    - workflow-job:985.v8c21c963d92d
-    - command-launcher:84.v4a_97f2027398
+    - kubernetes:4013.v1a_0a_4367b_f82f"
+    - workflow-job:1289.vd1c337fd5354"
+    - command-launcher:108.v14d7c66525ee"
   persistence:
     enabled: true
     storageClass: "standard"
@@ -17,13 +17,13 @@ controller:
   securityContext:
     runAsUser: 1000
     fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
 
 agent:
   enabled: true
   podName: "jenkins-agent"
-  image:
-    repository: jenkins/inbound-agent
-    tag: alpine
+  image: "jenkins/inbound-agent"
+  tag: "alpine"
   resources:
     requests:
       cpu: "512m"
