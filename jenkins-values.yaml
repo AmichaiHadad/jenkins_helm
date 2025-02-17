@@ -1,0 +1,36 @@
+# jenkins-values.yaml
+controller:
+  componentName: "jenkins-controller"
+  image: "jenkins/jenkins"
+  tag: "lts-jdk17"
+  adminUser: "admin"
+  adminPassword: "admin123"
+  serviceType: ClusterIP
+  installPlugins:
+    - kubernetes:1.31.4
+    - workflow-job:985.v8c21c963d92d
+    - command-launcher:84.v4a_97f2027398
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    size: 8Gi
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
+
+agent:
+  enabled: true
+  podName: "jenkins-agent"
+  image: "jenkins/inbound-agent"
+  tag: "alpine"
+  resources:
+    requests:
+      cpu: "512m"
+      memory: "512Mi"
+    limits:
+      cpu: "1024m"
+      memory: "1024Mi"
+
+persistence:
+  enabled: true
+  storageClass: "standard"
