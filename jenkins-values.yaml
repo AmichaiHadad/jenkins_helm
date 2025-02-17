@@ -1,8 +1,8 @@
-# jenkins-values.yaml
 controller:
   componentName: "jenkins-controller"
-  image: "jenkins/jenkins"
-  tag: "lts-jdk17"
+  image:
+    repository: jenkins/jenkins
+    tag: lts-jdk17
   adminUser: "admin"
   adminPassword: "admin123"
   serviceType: ClusterIP
@@ -21,8 +21,9 @@ controller:
 agent:
   enabled: true
   podName: "jenkins-agent"
-  image: "jenkins/inbound-agent"
-  tag: "alpine"
+  image:
+    repository: jenkins/inbound-agent
+    tag: alpine
   resources:
     requests:
       cpu: "512m"
